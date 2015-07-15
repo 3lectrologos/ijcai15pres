@@ -1,0 +1,104 @@
+\documentclass[xetex,10pt,mathserif]{beamer}
+
+\usetheme{Boadilla}
+\usecolortheme{seahorse}
+
+\usefonttheme{professionalfonts}
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+\setmainfont[Ligatures={Common,TeX}, Scale=0.95]{Myriad Pro}
+\setsansfont[Ligatures={Common,TeX}, Scale=0.95]{Myriad Pro}
+
+\usepackage{media9}
+\usepackage{grfext}\PrependGraphicsExtensions*{.png,.PNG}
+
+
+%%
+\usepackage{mathtools}
+\usepackage{xspace}
+\usepackage{makecell}
+\usepackage{msthpres}
+\usepackage{pdfpages} 
+%%
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,shapes,fit}
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween,colormaps}
+\newlength\figureheight
+\newlength\figurewidth
+
+% presentation stuff
+\newcommand{\sig}[2]{%
+\begin{tabular}{r}
+#1\\[-0.7em]
+{\tiny \color{darkgray}\it #2\hspace{0.5em}}
+\end{tabular}}
+
+\newcommand{\qauth}[1]{{\footnotesize\par\normalfont\hfill---\ \emph{#1}\par}}
+
+\newcommand{\qcite}[1]{{\small\color{gray}[#1]}}
+
+% math stuff
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\LLC}{$L$-Lipschitz continuous}
+\newcommand{\Reps}{R_{\epsilon}}
+\newcommand{\Rbeps}{\bar{R}_{\epsilon}}
+\newcommand{\Ro}{R_{0}}
+\newcommand{\Rbo}{\bar{R}_{0}}
+\newcommand{\xb}{\hat{\*x}}
+\newcommand{\smid}{\ \middle\vert\ }
+\newcommand{\bigsmid}{\ \big\vert\ }
+\newcommand{\setdef}[2]{\left\{ #1 \smid #2 \right\}}
+\newcommand{\bigsetdef}[2]{\big\{ #1 \bigsmid #2 \big\}}
+
+\usepackage{xspace}
+\newcommand{\algo}{{\sc\textsf{SafeOpt}}\xspace}
+\newcommand{\gpucb}{{\sc\textsf{GP-UCB}}\xspace}
+\newcommand{\localucb}{{\sc\textsf{Safe-UCB}}\xspace}
+
+% Colored sets
+\newcommand{\cst}{{\color{cyan!70!black}$S_t$}\xspace}
+\newcommand{\ccst}{{\color{cyan!70!black}S_t}\xspace}
+\newcommand{\cgt}{{\color{lime!70!black}$G_t$}\xspace}
+\newcommand{\ccgt}{{\color{lime!70!black}G_t}\xspace}
+\newcommand{\cmt}{{\color{orange!70!black}$M_t$}\xspace}
+\newcommand{\ccmt}{{\color{orange!70!black}M_t}\xspace}
+\newcommand{\crbo}{{\color{magenta!70!black}$\Rbo(S_0)$}\xspace}
+\newcommand{\crbeps}{{\color{magenta!70!black}$\Rbeps(S_0)$}\xspace}
+\newcommand{\ccrbeps}{{\color{magenta!70!black}\Rbeps(S_0)}\xspace}
+
+\title[Non-monotone Adaptive Submodular Maximization]
+{Non-monotone Adaptive Submodular Maximization}
+
+\author[Alkis Gotovos]{
+\vspace{1in}
+\normalsize
+\parbox{1in}{Alkis Gotovos\\{\footnotesize ETH Zurich}}\and
+\parbox{1in}{Amin Karbasi\\{\footnotesize Yale University}}\and
+\parbox{1in}{Andreas Krause\\{\footnotesize ETH Zurich}}
+}
+
+\date[May 4, 2015]{
+\begin{center}
+{\normalsize
+ICML '15
+}
+\end{center}
+}
+
+\begin{document}
+
+\setbeamercolor{background canvas}{bg=}
+\includepdf[pages={1}]{title.pdf}
+
+\begin{frame}{Goal}
+\centering
+\large
+Optimize an unknown reward function via sequential sampling\\[1em]
+AND\\[1em]
+remain ``safe'' throughout the process.
+\end{frame}
+
+\end{document}
