@@ -93,12 +93,72 @@ ICML '15
 \setbeamercolor{background canvas}{bg=}
 \includepdf[pages={1}]{title.pdf}
 
-\begin{frame}{Goal}
+\begin{frame}{Birdwatching}
 \centering
-\large
-Optimize an unknown reward function via sequential sampling\\[1em]
-AND\\[1em]
-remain ``safe'' throughout the process.
+\includegraphics[width=4.75in]{figures/map.pdf}
+\end{frame}
+
+\begin{frame}{Birdwatching}
+\centering
+\includegraphics[width=4.75in]{figures/intro.pdf}
+\end{frame}
+
+\begin{frame}{Birdwatching}
+\centering
+\includegraphics[width=4.75in]{figures/intro_1.pdf}
+\end{frame}
+
+\begin{frame}{Objective}
+\begin{columns}[c]
+\column{0.6\textwidth}
+\begin{itemize}
+\item Ground set $V = \{a, b, c, d\}$
+\vspace{2em}
+\item Objective function $f : 2^V \to \mathbb{R}_{\geq 0}$
+\vspace{2em}
+\item $f(\{c\}) = 3$
+\vspace{2em}
+\item $f(\{a, c\}) = 4$
+\end{itemize}
+\column{0.4\textwidth}
+\centering
+\includegraphics[width=2in]{figures/sets.pdf}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Objective}
+\begin{columns}[c]
+\column{0.6\textwidth}
+\begin{itemize}
+\item $f$ is monotone
+\vspace{2em}
+\item $f$ is submodular
+\vspace{2em}
+\item Benefit of visiting $c$ given that\ldots
+\begin{itemize}
+\vspace{1em}
+\item \ldots it is the first place we visit:
+\begin{align*}
+  f(\{c\}) = 3
+\end{align*}
+\item \ldots we have already visited $a$:
+\begin{align*}
+  f(\{a, c\}) - f(\{a\}) = 4 - 3 = 1
+\end{align*}
+\end{itemize}
+\end{itemize}
+\column{0.4\textwidth}
+\centering
+\includegraphics[width=2in]{figures/sets.pdf}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Monotone submodular maximization}
+\begin{itemize}
+\item $\max f(S)$ $\rightarrow$ trivial (just visit all places)
+\vspace{2em}
+\item Maximize the number of observed species by visiting at most $k$ places $\rightarrow$ NP-hard
+\end{itemize}
 \end{frame}
 
 \end{document}
