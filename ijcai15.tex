@@ -15,6 +15,7 @@
 
 
 %%
+\usepackage{tabularx}
 \usepackage{mathtools}
 \usepackage{xspace}
 \usepackage{makecell}
@@ -100,12 +101,12 @@ ICML '15
 
 \begin{frame}{Birdwatching}
 \centering
-\includegraphics[width=4.75in]{figures/intro.pdf}
+\includegraphics[width=4.75in]{figures/intro_1.pdf}
 \end{frame}
 
 \begin{frame}{Birdwatching}
 \centering
-\includegraphics[width=4.75in]{figures/intro_1.pdf}
+\includegraphics[width=4.75in]{figures/intro_2.pdf}
 \end{frame}
 
 \begin{frame}{Objective}
@@ -134,16 +135,16 @@ ICML '15
 \vspace{2em}
 \item $f$ is submodular
 \vspace{2em}
-\item Benefit of visiting $c$ given that\ldots
+\item Benefit of visiting $c$, given that\ldots
 \begin{itemize}
 \vspace{1em}
 \item \ldots it is the first place we visit:
 \begin{align*}
   f(\{c\}) = 3
 \end{align*}
-\item \ldots we have already visited $a$:
+\item \ldots we have already visited $d$:
 \begin{align*}
-  f(\{a, c\}) - f(\{a\}) = 4 - 3 = 1
+  f(\{c, d\}) - f(\{d\}) = 4 - 3 = 1
 \end{align*}
 \end{itemize}
 \end{itemize}
@@ -153,12 +154,66 @@ ICML '15
 \end{columns}
 \end{frame}
 
+\renewcommand{\tabularxcolumn}[1]{>{\small}m{#1}}
 \begin{frame}{Monotone submodular maximization}
 \begin{itemize}
-\item $\max f(S)$ $\rightarrow$ trivial (just visit all places)
+\item Unconstrained problem:\\
+\begin{tabularx}{3in}{XcX}
+{\begin{align*}\textrm{maximize}\ \ \ f(S)\end{align*}} & $\longrightarrow$ & {\color{green!50!darkgray}Trivial} $\ \ \textrm{OPT} = f(V)$
+\end{tabularx}
 \vspace{2em}
-\item Maximize the number of observed species by visiting at most $k$ places $\rightarrow$ NP-hard
+\item Cardinality-constrained problem:\\
+\begin{tabularx}{3in}{XcX}
+{\begin{align*}\textrm{maximize}\ \ \ &f(S)\\ \textrm{subject to}\ \ \ &|S| \leq k\end{align*}} & $\longrightarrow$ & \color{red!80!darkgray} NP-hard
+\end{tabularx}
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Greedy}
+\begin{columns}[c]
+\column{0.6\textwidth}
+\begin{itemize}
+\item<1-> $k = 3$
+\vspace{1em}
+\item<2-> $S_0 = \varnothing\ \ \longrightarrow\ \ f(S_0) = 0$
+\vspace{1em}
+\item<3-> $S_1 = \{d\}\ \ \longrightarrow\ \ f(S_1) = 4$
+\vspace{1em}
+\item<4-> $S_2 = \{d, a\}\ \ \longrightarrow\ \ f(S_2) = 5$
+\vspace{1em}
+\item<5-> $S_3 = \{d, a, b\}\ \ \longrightarrow\ \ f(S_3) = 6$
+\vspace{1em}
+\item<6-> $\textrm{OPT} = f(\{a, b, c\}) = 7$
+\end{itemize}
+\column{0.4\textwidth}
+\centering
+\only<1-2>{
+\includegraphics[width=2in]{figures/sets.pdf}
+}
+\only<3>{
+\includegraphics[width=2in]{figures/sets_greedy_1.pdf}
+}
+\only<4>{
+\includegraphics[width=2in]{figures/sets_greedy_2.pdf}
+}
+\only<5>{
+\includegraphics[width=2in]{figures/sets_greedy_3.pdf}
+}
+\only<6>{
+\includegraphics[width=2in]{figures/sets.pdf}
+}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Greedy}
+
+{\large Theorem} \qcite{Nemhauser et al., 1978}\\[1em]
+\hspace{0.5em}If $f$ is monotone submodular, then greedy gives a (1 - 1/e)-approximation.
+\end{frame}
+
+\begin{frame}{Birdwatching with costs}
+\centering
+\includegraphics[width=4.75in]{figures/intro_roads.pdf}
 \end{frame}
 
 \end{document}
