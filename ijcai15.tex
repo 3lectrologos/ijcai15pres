@@ -15,12 +15,15 @@
 
 
 %%
+\usepackage{calc}
 \usepackage{tabularx}
+\usepackage{booktabs}
 \usepackage{mathtools}
 \usepackage{xspace}
 \usepackage{makecell}
 \usepackage{msthpres}
-\usepackage{pdfpages} 
+\usepackage{pdfpages}
+\usepackage{changepage} % Indented paragraph
 %%
 
 \usepackage{tikz}
@@ -40,6 +43,40 @@
 \newcommand{\qauth}[1]{{\footnotesize\par\normalfont\hfill---\ \emph{#1}\par}}
 
 \newcommand{\qcite}[1]{{\small\color{gray}[#1]}}
+
+\newlength{\theoremlen}
+\newcommand{\qtheorem}[1]{%
+\settowidth{\theoremlen}{{\large Theorem}}
+{\large Theorem}\\[-0.8em]
+\textcolor{darkgray}{\rule{\theoremlen+0.3em}{0.15mm}}\\[1em]
+#1
+\setlength{\leftskip}{0em}
+}
+
+\newcommand{\qtheorems}[2]{%
+\settowidth{\theoremlen}{{\large Theorem} \qcite{#1}}
+{\large Theorem} \qcite{#1}\\[-0.8em]
+\textcolor{darkgray}{\rule{\theoremlen+0.3em}{0.15mm}}\\[1em]
+\begin{adjustwidth}{1em}{}
+#2
+\end{adjustwidth}
+}
+
+\newcommand{\qtheoremss}[3]{%
+\settowidth{\theoremlen}{{\large Theorem} \qcite{#1}}
+{\large Theorem} \qcite{#1}\\[-0.8em]
+\textcolor{darkgray}{\rule{\theoremlen+0.3em}{0.15mm}}\\[1em]
+\begin{adjustwidth}{1em}{}
+#2\\[1em]
+#3
+\end{adjustwidth}
+}
+
+\newcommand{\qstar}[1]{%
+\begin{adjustwidth}{1em}{}
+\small{* #1}
+\end{adjustwidth}
+}
 
 % math stuff
 \newcommand{\defeq}{\vcentcolon=}
@@ -174,46 +211,71 @@ ICML '15
 \column{0.6\textwidth}
 \begin{itemize}
 \item<1-> $k = 3$
-\vspace{1em}
+\vspace{1.5em}
 \item<2-> $S_0 = \varnothing\ \ \longrightarrow\ \ f(S_0) = 0$
-\vspace{1em}
+\vspace{1.5em}
 \item<3-> $S_1 = \{d\}\ \ \longrightarrow\ \ f(S_1) = 4$
-\vspace{1em}
+\vspace{1.5em}
 \item<4-> $S_2 = \{d, a\}\ \ \longrightarrow\ \ f(S_2) = 5$
-\vspace{1em}
+\vspace{1.5em}
 \item<5-> $S_3 = \{d, a, b\}\ \ \longrightarrow\ \ f(S_3) = 6$
-\vspace{1em}
+\vspace{1.5em}
 \item<6-> $\textrm{OPT} = f(\{a, b, c\}) = 7$
 \end{itemize}
 \column{0.4\textwidth}
 \centering
-\only<1-2>{
-\includegraphics[width=2in]{figures/sets.pdf}
-}
-\only<3>{
-\includegraphics[width=2in]{figures/sets_greedy_1.pdf}
-}
-\only<4>{
-\includegraphics[width=2in]{figures/sets_greedy_2.pdf}
-}
-\only<5>{
-\includegraphics[width=2in]{figures/sets_greedy_3.pdf}
-}
-\only<6>{
-\includegraphics[width=2in]{figures/sets.pdf}
-}
+\includegraphics<1-2>[width=2in]{figures/sets.pdf}
+\includegraphics<3>[width=2in]{figures/sets_greedy_1.pdf}
+\includegraphics<4>[width=2in]{figures/sets_greedy_2.pdf}
+\includegraphics<5>[width=2in]{figures/sets_greedy_3.pdf}
+\includegraphics<6>[width=2in]{figures/sets.pdf}
 \end{columns}
 \end{frame}
 
 \begin{frame}{Greedy}
-
-{\large Theorem} \qcite{Nemhauser et al., 1978}\\[1em]
-\hspace{0.5em}If $f$ is monotone submodular, then greedy gives a (1 - 1/e)-approximation.
+\vspace{-3em}
+\qtheorems{Nemhauser \emph{et al.}, 1978}{If $f$ is monotone submodular, then greedy gives a $(1 - 1/e)$ approximation ratio.}
 \end{frame}
 
 \begin{frame}{Birdwatching with costs}
 \centering
 \includegraphics[width=4.75in]{figures/intro_roads.pdf}
+\end{frame}
+
+\begin{frame}{Random greedy}
+
+\qtheoremss{Buchbinder \emph{et al.}, 2014}{If $f$ is submodular, then random greedy gives a $1/e$ approximation ratio*.}{If $f$ is also monotone, then random greedy gives a $(1 - 1/e)$ approximation ratio*.}
+\vspace{4em}
+\qstar{In expectation over the randomness of the algorithm.}
+\end{frame}
+
+\begin{frame}{Adaptive greedy}
+
+\qtheorems{Golovin and Krause, 2010}{If $f$ is adaptive monotone submodular, then adaptive greedy gives a $(1 - 1/e)$ approximation ratio*.}
+\vspace{4em}
+\qstar{In expectation over the randomness of the environment.}
+\end{frame}
+
+\begin{frame}{What's missing?}
+
+Cardinality-constrained submodular maximization
+\vspace{2em}
+
+\begin{tabularx}{4.5in}{@{}X *2{>{\centering\arraybackslash}X}@{}}
+\toprule
+& \textbf{Non-adaptive} & \textbf{Adaptive}\\
+\midrule
+\textbf{Monotone} & {\begin{center}Greedy\\($1 - 1/e$)\end{center}} & {\begin{center}Adaptive greedy\\($1 - 1/e$)\end{center}}\\
+\textbf{Non-monotone} & {\begin{center}Random greedy\\($1/e$)\end{center}} & {\Huge ?}\\
+\bottomrule
+\end{tabularx}
+\end{frame}
+
+\begin{frame}{Adaptive random greedy}
+
+\qtheoremss{Our contribution}{If $f$ is adaptive submodular, then adaptive random greedy gives a $1/e$ approximation ratio*.}{If $f$ is also adaptive monotone, then adaptive random greedy gives a $(1 - 1/e)$ approximation ratio*.}
+\vspace{4em}
+\qstar{In expectation over the randomness of the algorithm and the environment.}
 \end{frame}
 
 \end{document}
