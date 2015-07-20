@@ -192,15 +192,15 @@ ICML '15
 \begin{itemize}
 \item<1-> Unconstrained problem:\\
 \begin{tabularx}{3in}{XcX}
-{\begin{align*}\textrm{maximize}\ \ \ f(S)\end{align*}} & $\longrightarrow$ & {\color{green!50!darkgray}Trivial} $\ \ \textrm{OPT} = f(V)$
+{\begin{align*}\textrm{maximize}\ \ \ f(S)\end{align*}}\uncover<2->{ & $\longrightarrow$ & {\color{green!50!darkgray}Trivial} $\ \ \textrm{OPT} = f(V)$}
 \end{tabularx}
 \vspace{1em}
-\item<2-> Cardinality-constrained problem:\\
+\item<3-> Cardinality-constrained problem:\\
 \begin{tabularx}{3in}{XcX}
-{\begin{align*}\textrm{maximize}\ \ \ &f(S)\\ \textrm{subject to}\ \ \ &|S| \leq k\end{align*}} & $\longrightarrow$ & \color{red!80!darkgray} NP-hard
+{\begin{align*}\textrm{maximize}\ \ \ &f(S)\\ \textrm{subject to}\ \ \ &|S| \leq k\end{align*}}\uncover<4->{ & $\longrightarrow$ & \color{red!80!darkgray} NP-hard}
 \end{tabularx}
 \vspace{1em}
-\item<3-> More general constraints: matroid, knapsack, etc.
+\item<5-> More general constraints: matroid, knapsack, etc.
 \end{itemize}
 \end{frame}
 
@@ -234,7 +234,7 @@ ICML '15
 \begin{columns}[c]
 \column{0.6\textwidth}
 \begin{itemize}
-\item<1-> $k = 3$
+\item<1-> $k = 2$
 \vspace{1.5em}
 \item<2-> $S_0 = \varnothing\ \ \longrightarrow\ \ f(S_0) = 0$
 \vspace{1.5em}
@@ -242,17 +242,14 @@ ICML '15
 \vspace{1.5em}
 \item<4-> $S_2 = \{d, a\}\ \ \longrightarrow\ \ f(S_2) = 5$
 \vspace{1.5em}
-\item<5-> $S_3 = \{d, a, b\}\ \ \longrightarrow\ \ f(S_3) = 6$
-\vspace{1.5em}
-\item<6-> $\textrm{OPT} = f(\{a, b, c\}) = 7$
+\item<5-> $\textrm{OPT} = f(\{a, c\}) = 6$
 \end{itemize}
 \column{0.4\textwidth}
 \centering
 \includegraphics<1-2>[width=2in]{figures/sets.pdf}
 \includegraphics<3>[width=2in]{figures/sets_greedy_1.pdf}
 \includegraphics<4>[width=2in]{figures/sets_greedy_2.pdf}
-\includegraphics<5>[width=2in]{figures/sets_greedy_3.pdf}
-\includegraphics<6>[width=2in]{figures/sets.pdf}
+\includegraphics<5>[width=2in]{figures/sets.pdf}
 \end{columns}
 \end{frame}
 
@@ -269,11 +266,9 @@ ICML '15
 \begin{frame}{Non-monotonicity}
 \begin{itemize}
   \item<1-> $g(A)\ \ = \underbrace{f(A)}_{\text{monotone submodular}} -\hspace{2em}\underbrace{c(A)}_{\text{cost term}}$
-  \vspace{2em}
-  \item<2-> Uniform costs $\ \ \longrightarrow\ \ c(A) = \lambda |A|$
-  \vspace{2em}
+  \vspace{2.5em}
   \item<3-> Greedy has no guarantees for non-monotone functions
-  \vspace{2em}
+  \vspace{2.5em}
   \item<4-> Introduce randomization $\ \ \longrightarrow\ \ $ \emph{random greedy} algorithm
 \end{itemize}
 \end{frame}
@@ -321,60 +316,8 @@ ICML '15
 \toprule
 & \textbf{Non-adaptive} & \textbf{Adaptive}\\
 \midrule
-\textbf{Monotone} & {\begin{center}\color{white}Greedy\\($1 - 1/e$)\end{center}} & {\begin{center}\color{white}Adaptive greedy\\($1 - 1/e$)\end{center}}\\
-\textbf{Non-monotone} & {\begin{center}\color{white}Random greedy\\($1/e$)\end{center}} & {\Huge\color{white} ?}\\
-\bottomrule
-\end{tabularx}
-\end{frame}
-
-\begin{frame}{What's missing?}
-
-\centering
-\begin{tabularx}{4.5in}{@{}X *2{>{\centering\arraybackslash}X}@{}}
-\toprule
-& \textbf{Non-adaptive} & \textbf{Adaptive}\\
-\midrule
-\textbf{Monotone} & {\begin{center}Greedy\\($1 - 1/e$)\end{center}} & {\begin{center}\color{white}Adaptive greedy\\($1 - 1/e$)\end{center}}\\
-\textbf{Non-monotone} & {\begin{center}\color{white}Random greedy\\($1/e$)\end{center}} & {\Huge\color{white} ?}\\
-\bottomrule
-\end{tabularx}
-\end{frame}
-
-\begin{frame}{What's missing?}
-
-\centering
-\begin{tabularx}{4.5in}{@{}X *2{>{\centering\arraybackslash}X}@{}}
-\toprule
-& \textbf{Non-adaptive} & \textbf{Adaptive}\\
-\midrule
-\textbf{Monotone} & {\begin{center}Greedy\\($1 - 1/e$)\end{center}} & {\begin{center}\color{white}Adaptive greedy\\($1 - 1/e$)\end{center}}\\
-\textbf{Non-monotone} & {\begin{center}Random greedy\\($1/e$)\end{center}} & {\Huge\color{white} ?}\\
-\bottomrule
-\end{tabularx}
-\end{frame}
-
-\begin{frame}{What's missing?}
-
-\centering
-\begin{tabularx}{4.5in}{@{}X *2{>{\centering\arraybackslash}X}@{}}
-\toprule
-& \textbf{Non-adaptive} & \textbf{Adaptive}\\
-\midrule
-\textbf{Monotone} & {\begin{center}Greedy\\($1 - 1/e$)\end{center}} & {\begin{center}Adaptive greedy\\($1 - 1/e$)\end{center}}\\
-\textbf{Non-monotone} & {\begin{center}Random greedy\\($1/e$)\end{center}} & {\Huge\color{white} ?}\\
-\bottomrule
-\end{tabularx}
-\end{frame}
-
-\begin{frame}{What's missing?}
-
-\centering
-\begin{tabularx}{4.5in}{@{}X *2{>{\centering\arraybackslash}X}@{}}
-\toprule
-& \textbf{Non-adaptive} & \textbf{Adaptive}\\
-\midrule
-\textbf{Monotone} & {\begin{center}Greedy\\($1 - 1/e$)\end{center}} & {\begin{center}Adaptive greedy\\($1 - 1/e$)\end{center}}\\
-\textbf{Non-monotone} & {\begin{center}Random greedy\\($1/e$)\end{center}} & {\Huge ?}\\
+\textbf{Monotone} & \uncover<2->{\begin{center}Greedy\\($1 - 1/e$)\end{center}} & \uncover<4->{\begin{center}Adaptive greedy\\($1 - 1/e$)\end{center}}\\
+\textbf{Non-monotone} & \uncover<3->{\begin{center}Random greedy\\($1/e$)\end{center}} & \uncover<5->{\Huge ?}\\
 \bottomrule
 \end{tabularx}
 \end{frame}
