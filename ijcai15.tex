@@ -271,7 +271,7 @@ ICML '15
 \includegraphics[width=4.75in]{figures/intro_roads.pdf}
 \end{frame}
 
-\begin{frame}{Non-monotone submodular maximization}
+\begin{frame}{Non-monotonicity}
 \begin{itemize}
   \item $g(A)\ \ = \underbrace{f(A)}_{\text{monotone submodular}} -\hspace{2em}\underbrace{c(A)}_{\text{cost term}}$
   \vspace{2em}
@@ -300,6 +300,18 @@ ICML '15
 \includegraphics[width=4.75in]{figures/intro_adaptive.pdf}
 \end{frame}
 
+\begin{frame}{Adaptivity}
+\begin{itemize}
+  \item Non-adaptive: Choose set of locations in advance without looking at outcomes
+  \vspace{2em}
+  \item Adaptive: Sequentially make choices based on past outcomes
+  \vspace{2em}
+  \item Monotonicity and submodularity $\ \ \longrightarrow\ \ $ adaptive monotonicity and adaptive submodularity
+  \vspace{2em}
+  \item Adaptive greedy: Select the most promising location in conditional expectation
+\end{itemize}
+\end{frame}
+
 \begin{frame}{Adaptive greedy}
 
 \qtheorems{Golovin and Krause, 2010}{If $f$ is adaptive monotone submodular, then adaptive greedy gives a ($1 - 1/e$)-approximation*.}
@@ -314,10 +326,79 @@ ICML '15
 \toprule
 & \textbf{Non-adaptive} & \textbf{Adaptive}\\
 \midrule
+\textbf{Monotone} & {\begin{center}\color{white}Greedy\\($1 - 1/e$)\end{center}} & {\begin{center}\color{white}Adaptive greedy\\($1 - 1/e$)\end{center}}\\
+\textbf{Non-monotone} & {\begin{center}\color{white}Random greedy\\($1/e$)\end{center}} & {\Huge\color{white} ?}\\
+\bottomrule
+\end{tabularx}
+\end{frame}
+
+\begin{frame}{What's missing?}
+
+\centering
+\begin{tabularx}{4.5in}{@{}X *2{>{\centering\arraybackslash}X}@{}}
+\toprule
+& \textbf{Non-adaptive} & \textbf{Adaptive}\\
+\midrule
+\textbf{Monotone} & {\begin{center}Greedy\\($1 - 1/e$)\end{center}} & {\begin{center}\color{white}Adaptive greedy\\($1 - 1/e$)\end{center}}\\
+\textbf{Non-monotone} & {\begin{center}\color{white}Random greedy\\($1/e$)\end{center}} & {\Huge\color{white} ?}\\
+\bottomrule
+\end{tabularx}
+\end{frame}
+
+\begin{frame}{What's missing?}
+
+\centering
+\begin{tabularx}{4.5in}{@{}X *2{>{\centering\arraybackslash}X}@{}}
+\toprule
+& \textbf{Non-adaptive} & \textbf{Adaptive}\\
+\midrule
+\textbf{Monotone} & {\begin{center}Greedy\\($1 - 1/e$)\end{center}} & {\begin{center}\color{white}Adaptive greedy\\($1 - 1/e$)\end{center}}\\
+\textbf{Non-monotone} & {\begin{center}Random greedy\\($1/e$)\end{center}} & {\Huge\color{white} ?}\\
+\bottomrule
+\end{tabularx}
+\end{frame}
+
+\begin{frame}{What's missing?}
+
+\centering
+\begin{tabularx}{4.5in}{@{}X *2{>{\centering\arraybackslash}X}@{}}
+\toprule
+& \textbf{Non-adaptive} & \textbf{Adaptive}\\
+\midrule
+\textbf{Monotone} & {\begin{center}Greedy\\($1 - 1/e$)\end{center}} & {\begin{center}Adaptive greedy\\($1 - 1/e$)\end{center}}\\
+\textbf{Non-monotone} & {\begin{center}Random greedy\\($1/e$)\end{center}} & {\Huge\color{white} ?}\\
+\bottomrule
+\end{tabularx}
+\end{frame}
+
+\begin{frame}{What's missing?}
+
+\centering
+\begin{tabularx}{4.5in}{@{}X *2{>{\centering\arraybackslash}X}@{}}
+\toprule
+& \textbf{Non-adaptive} & \textbf{Adaptive}\\
+\midrule
 \textbf{Monotone} & {\begin{center}Greedy\\($1 - 1/e$)\end{center}} & {\begin{center}Adaptive greedy\\($1 - 1/e$)\end{center}}\\
 \textbf{Non-monotone} & {\begin{center}Random greedy\\($1/e$)\end{center}} & {\Huge ?}\\
 \bottomrule
 \end{tabularx}
+\end{frame}
+
+\begin{frame}{What's missing?}
+\centering
+\includegraphics[width=4.75in]{figures/intro_adaptive_roads.pdf}
+\end{frame}
+
+\begin{frame}{What's missing?}
+\large How do we maximize a non-monotone adaptive submodular function subject to a cardinality constraint?
+
+\vspace{3em}
+\uncover<2->{
+\centering
+\begin{tcolorbox}[enhanced jigsaw,size=tight,middle=0in,width=2.25in,boxsep=0in,boxrule=0.3mm,colframe=ctitle!80!white,colback=crest!30!white,left=6mm,enlarge left by=-6.3mm,top=3mm,bottom=3mm]
+\textbf{Adaptive random greedy}\strut
+\end{tcolorbox}
+}
 \end{frame}
 
 \begin{frame}{Adaptive random greedy}
