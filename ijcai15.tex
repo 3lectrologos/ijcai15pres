@@ -69,7 +69,7 @@
 \textcolor{darkgray}{\rule{\theoremlen+0.3em}{0.15mm}}\\[1em]
 \begin{adjustwidth}{1em}{}
 #2\\[1em]
-#3
+\uncover<2->{#3}
 \end{adjustwidth}
 }
 
@@ -139,11 +139,6 @@ ICML '15
 
 \begin{frame}{Birdwatching}
 \centering
-\includegraphics[width=4.75in]{figures/intro_1.pdf}
-\end{frame}
-
-\begin{frame}{Birdwatching}
-\centering
 \includegraphics[width=4.75in]{figures/intro_2.pdf}
 \end{frame}
 
@@ -151,13 +146,13 @@ ICML '15
 \begin{columns}[c]
 \column{0.6\textwidth}
 \begin{itemize}
-\item Ground set $V = \{a, b, c, d\}$
+\item<2-> Ground set $V = \{a, b, c, d\}$
 \vspace{2em}
-\item Objective function $f : 2^V \to \mathbb{R}_{\geq 0}$
+\item<3-> Objective function $f : 2^V \to \mathbb{R}_{\geq 0}$
 \vspace{2em}
-\item $f(\{d\}) = 4$
+\item<4-> $f(\{d\}) = 4$
 \vspace{2em}
-\item $f(\{c, d\}) = 5$
+\item<5-> $f(\{c, d\}) = 5$
 \end{itemize}
 \column{0.4\textwidth}
 \centering
@@ -169,18 +164,18 @@ ICML '15
 \begin{columns}[c]
 \column{0.6\textwidth}
 \begin{itemize}
-\item $f$ is monotone
+\item<1-> $f$ is monotone
 \vspace{2em}
-\item $f$ is submodular
+\item<2-> $f$ is submodular
 \vspace{2em}
-\item Benefit of visiting $c$, given that\ldots
+\item<3-> Benefit of visiting $c$, given that\ldots
 \begin{itemize}
 \vspace{1em}
-\item \ldots it is the first place we visit:
+\item<4-> \ldots it is the first place we visit:
 \begin{align*}
   f(\{c\}) = 3
 \end{align*}
-\item \ldots we have already visited $d$:
+\item<5-> \ldots we have already visited $d$:
 \begin{align*}
   f(\{c, d\}) - f(\{d\}) = 5 - 4 = 1
 \end{align*}
@@ -195,17 +190,17 @@ ICML '15
 \renewcommand{\tabularxcolumn}[1]{>{\small}m{#1}}
 \begin{frame}{Monotone submodular maximization}
 \begin{itemize}
-\item Unconstrained problem:\\
+\item<1-> Unconstrained problem:\\
 \begin{tabularx}{3in}{XcX}
 {\begin{align*}\textrm{maximize}\ \ \ f(S)\end{align*}} & $\longrightarrow$ & {\color{green!50!darkgray}Trivial} $\ \ \textrm{OPT} = f(V)$
 \end{tabularx}
 \vspace{1em}
-\item Cardinality-constrained problem:\\
+\item<2-> Cardinality-constrained problem:\\
 \begin{tabularx}{3in}{XcX}
 {\begin{align*}\textrm{maximize}\ \ \ &f(S)\\ \textrm{subject to}\ \ \ &|S| \leq k\end{align*}} & $\longrightarrow$ & \color{red!80!darkgray} NP-hard
 \end{tabularx}
 \vspace{1em}
-\item More general constraints: matroid, knapsack, etc.
+\item<3-> More general constraints: matroid, knapsack, etc.
 \end{itemize}
 \end{frame}
 
@@ -273,13 +268,13 @@ ICML '15
 
 \begin{frame}{Non-monotonicity}
 \begin{itemize}
-  \item $g(A)\ \ = \underbrace{f(A)}_{\text{monotone submodular}} -\hspace{2em}\underbrace{c(A)}_{\text{cost term}}$
+  \item<1-> $g(A)\ \ = \underbrace{f(A)}_{\text{monotone submodular}} -\hspace{2em}\underbrace{c(A)}_{\text{cost term}}$
   \vspace{2em}
-  \item Uniform costs $\ \ \longrightarrow\ \ c(A) = \lambda |A|$
+  \item<2-> Uniform costs $\ \ \longrightarrow\ \ c(A) = \lambda |A|$
   \vspace{2em}
-  \item Greedy has no guarantees for non-monotone functions
+  \item<3-> Greedy has no guarantees for non-monotone functions
   \vspace{2em}
-  \item Introduce randomization $\ \ \longrightarrow\ \ $ random greedy algorithm
+  \item<4-> Introduce randomization $\ \ \longrightarrow\ \ $ \emph{random greedy} algorithm
 \end{itemize}
 \end{frame}
 
@@ -302,13 +297,13 @@ ICML '15
 
 \begin{frame}{Adaptivity}
 \begin{itemize}
-  \item Non-adaptive: Choose set of locations in advance without looking at outcomes
+  \item<1-> Non-adaptive: choose set of locations in advance without looking at outcomes
   \vspace{2em}
-  \item Adaptive: Sequentially make choices based on past outcomes
+  \item<2-> Adaptive: sequentially make choices based on past outcomes
   \vspace{2em}
-  \item Monotonicity and submodularity $\ \ \longrightarrow\ \ $ adaptive monotonicity and adaptive submodularity
+  \item<3-> Monotonicity and submodularity $\ \ \longrightarrow\ \ $ adaptive monotonicity and adaptive submodularity
   \vspace{2em}
-  \item Adaptive greedy: Select the most promising location in conditional expectation
+  \item<4-> Greedily select the most promising location in conditional expectation $\ \ \longrightarrow\ \ $ \emph{adaptive greedy} algorithm
 \end{itemize}
 \end{frame}
 
