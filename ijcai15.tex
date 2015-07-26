@@ -132,6 +132,24 @@ ICML '15
 \setbeamercolor{background canvas}{bg=}
 \includepdf[pages={1}]{title.pdf}
 
+\begin{frame}{Motivation}
+\begin{columns}[c]
+\column{0.5\textwidth}
+\begin{itemize}
+\item Many AI problems boil down to selecting a number of elements from a large set of options
+\vspace{3em}
+\item Sequentially make smart choices based on past observations
+\end{itemize}
+\column{0.5\textwidth}
+\centering
+\includegraphics[width=2.3in]{figures/diagnosis.pdf}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Motivation}
+\large{Find classes of objective functions that are amenable to efficient sequential optimization with theoretical approximation guarantees.}
+\end{frame}
+
 \begin{frame}{Birdwatching}
 \centering
 \includegraphics[width=4.75in]{figures/map.pdf}
@@ -304,7 +322,7 @@ ICML '15
 
 \begin{frame}{Adaptive greedy}
 
-\qtheorems{Golovin and Krause, 2010}{If $f$ is adaptive monotone submodular, then adaptive greedy gives a ($1 - 1/e$)-approximation*.}
+\qtheorems{Golovin and Krause, 2011}{If $f$ is adaptive monotone submodular, then adaptive greedy gives a ($1 - 1/e$)-approximation*.}
 \vspace{4em}
 \qstar{In expectation over the randomness of the environment.}
 \end{frame}
