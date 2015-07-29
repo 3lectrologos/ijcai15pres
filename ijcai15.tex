@@ -136,13 +136,15 @@ ICML '15
 \begin{columns}[c]
 \column{0.5\textwidth}
 \begin{itemize}
-\item Many AI problems boil down to selecting a number of elements from a large set of options
+\item<1-> Many AI problems boil down to selecting a number of elements from a large set of options
 \vspace{3em}
-\item Sequentially make smart choices based on past observations
+\item<2-> Sequentially make smart choices based on past observations
 \end{itemize}
 \column{0.5\textwidth}
+\uncover<3->{
 \centering
 \includegraphics[width=2.3in]{figures/diagnosis.pdf}
+}
 \end{columns}
 \end{frame}
 
@@ -252,19 +254,19 @@ ICML '15
 \begin{columns}[c]
 \column{0.6\textwidth}
 \begin{itemize}
-\item<1-> $k = 2$
+\item<2-> $k = 2$
 \vspace{2em}
-\item<2-> $S_0 = \varnothing\ \ \longrightarrow\ \ f(S_0) = 0$
+\item<3-> $S_0 = \varnothing\ \ \longrightarrow\ \ f(S_0) = 0$
 \vspace{2em}
-\item<3-> $S_1 = \{d\}\ \ \longrightarrow\ \ f(S_1) = 4$
+\item<4-> $S_1 = \{d\}\ \ \longrightarrow\ \ f(S_1) = 4$
 \vspace{2em}
-\item<4-> $S_2 = \{d, a\}\ \ \longrightarrow\ \ f(S_2) = 5$
+\item<5-> $S_2 = \{d, a\}\ \ \longrightarrow\ \ f(S_2) = 6$
 \end{itemize}
 \column{0.4\textwidth}
 \centering
-\includegraphics<1-2>[width=2in]{figures/sets.pdf}
-\includegraphics<3>[width=2in]{figures/sets_greedy_1.pdf}
-\includegraphics<4>[width=2in]{figures/sets_greedy_2.pdf}
+\includegraphics<2-3>[width=2in]{figures/sets.pdf}
+\includegraphics<4>[width=2in]{figures/sets_greedy_1.pdf}
+\includegraphics<5>[width=2in]{figures/sets_greedy_2.pdf}
 \end{columns}
 \end{frame}
 
